@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic-purple">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NOVA Mastery Hub - Advanced Personal Development Platform for productivity, habits, learning, and growth">
+    <meta name="keywords" content="productivity, habits, task management, personal development, learning, training">
+    <meta name="author" content="NOVA">
+    <meta name="robots" content="index, follow">
+    
+    <title>NOVA Mastery Hub | Advanced Personal Development Platform</title>
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body style="overflow: auto !important;">
+<style>body, html { overflow: auto !important; }</style>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-container">
+            <div class="loader-orbit"></div>
+            <div class="loader-orbit"></div>
+            <div class="loader-orbit"></div>
+            <div class="loader-core"></div>
+        </div>
+        <p class="loading-text">Initializing NOVA Hub...</p>
+    </div>
+
+    <!-- Three.js Background -->
+    <div id="canvas-container"></div>
+
+    <!-- CSS Particles -->
+    <div id="particles-container"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h1>NOVA</h1>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Main</span>
+                    <ul>
+                        <li>
+                            <a href="#dashboard" class="nav-link active" data-target="dashboard">
+                                <i class="fas fa-home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#habits" class="nav-link" data-target="habits">
+                                <i class="fas fa-check-double"></i>
+                                <span>Habits</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tasks" class="nav-link" data-target="tasks">
+                                <i class="fas fa-list-check"></i>
+                                <span>Tasks</span>
+                                <span class="nav-badge" id="task-badge">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pomodoro" class="nav-link" data-target="pomodoro">
+                                <i class="fas fa-clock"></i>
+                                <span>Pomodoro</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Learning</span>
+                    <ul>
+                        <li>
+                            <a href="#schedule" class="nav-link" data-target="schedule">
+                                <i class="fas fa-calendar-days"></i>
+                                <span>Schedule</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#languages" class="nav-link" data-target="languages">
+                                <i class="fas fa-language"></i>
+                                <span>Languages</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#development" class="nav-link" data-target="development">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Dev Progress</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Health</span>
+                    <ul>
+                        <li>
+                            <a href="#physical" class="nav-link" data-target="physical">
+                                <i class="fas fa-dumbbell"></i>
+                                <span>Training</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#diet" class="nav-link" data-target="diet">
+                                <i class="fas fa-utensils"></i>
+                                <span>Nutrition</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Tools</span>
+                    <ul>
+                        <li>
+                            <a href="#notes" class="nav-link" data-target="notes">
+                                <i class="fas fa-sticky-note"></i>
+                                <span>Notes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#analytics" class="nav-link" data-target="analytics">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Analytics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tools" class="nav-link" data-target="tools">
+                                <i class="fas fa-tools"></i>
+                                <span>Tools</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#knowledge" class="nav-link" data-target="knowledge">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Knowledge</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#challenges" class="nav-link" data-target="challenges">
+                                <i class="fas fa-trophy"></i>
+                                <span>Challenges</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#profile" class="nav-link" data-target="profile">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Profile & Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="quick-actions">
+                    <button id="toggle-ai-chat" class="quick-action-btn" title="AI Assistant">
+                        <i class="fas fa-robot"></i>
+                    </button>
+                    <button id="toggle-fullscreen" class="quick-action-btn" title="Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+                
+                <div class="theme-switcher">
+                    <button class="theme-btn active" data-theme="cosmic-purple" data-tooltip="Cosmic Purple" title="Cosmic Purple"></button>
+                    <button class="theme-btn" data-theme="cyber-glow" data-tooltip="Cyber Glow" title="Cyber Glow"></button>
+                    <button class="theme-btn" data-theme="solar-flare" data-tooltip="Solar Flare" title="Solar Flare"></button>
+                    <button class="theme-btn" data-theme="neon-night" data-tooltip="Neon Night" title="Neon Night"></button>
+                    <button class="theme-btn" data-theme="aurora" data-tooltip="Aurora" title="Aurora"></button>
+                </div>
+                
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="streak-count">0</span>
+                        <span class="stat-label">Day Streak</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="total-points">0</span>
+                        <span class="stat-label">Points</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav-overlay"></div>
+        <div class="mobile-nav">
+            <div class="mobile-nav-header">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>NOVA</span>
+                </div>
+                <button class="mobile-nav-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav-links">
+                <a href="#dashboard" data-target="dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#habits" data-target="habits"><i class="fas fa-check-double"></i> Habits</a>
+                <a href="#tasks" data-target="tasks"><i class="fas fa-list-check"></i> Tasks</a>
+                <a href="#pomodoro" data-target="pomodoro"><i class="fas fa-clock"></i> Pomodoro</a>
+                <a href="#schedule" data-target="schedule"><i class="fas fa-calendar-days"></i> Schedule</a>
+                <a href="#languages" data-target="languages"><i class="fas fa-language"></i> Languages</a>
+                <a href="#development" data-target="development"><i class="fas fa-laptop-code"></i> Dev Progress</a>
+                <a href="#physical" data-target="physical"><i class="fas fa-dumbbell"></i> Training</a>
+                <a href="#diet" data-target="diet"><i class="fas fa-utensils"></i> Nutrition</a>
+                <a href="#notes" data-target="notes"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a href="#analytics" data-target="analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="#tools" data-target="tools"><i class="fas fa-tools"></i> Tools</a>
+                <a href="#knowledge" data-target="knowledge"><i class="fas fa-bookmark"></i> Knowledge</a>
+                <a href="#challenges" data-target="challenges"><i class="fas fa-trophy"></i> Challenges</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <main class="main-content">
+                
+                <!-- ========== DASHBOARD ========== -->
+                <section id="dashboard" class="content-section active-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-home"></i> Dashboard</h2>
+                    </header>
+                    
+                    <div class="greeting-banner">
+                        <h3 id="greeting-message">Welcome back!</h3>
+                        <p class="greeting-subtitle">Ready to achieve greatness today?</p>
+                        <div class="datetime-display">
+                            <span class="time" id="current-time">00:00</span>
+                            <span class="date" id="current-date">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Stats Row -->
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="tasks-completed-today">0</span>
+                                    <span class="stat-label">Tasks Done</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="habits-completed-today">0/0</span>
+                                    <span class="stat-label">Habits</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-brain"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="focus-minutes">0</span>
+                                    <span class="stat-label">Focus Min</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="total-points">0</span>
+                                    <span class="stat-label">Points</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Tasks Widget -->
+                        <div class="widget widget-quick-tasks">
+                            <div class="widget-header">
+                                <i class="fas fa-bolt"></i>
+                                <h3>Quick Tasks</h3>
+                            </div>
+                            <div class="quick-task-input">
+                                <input type="text" id="quick-task-input" placeholder="Add quick task...">
+                                <button id="quick-add-task"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <ul id="quick-task-list" class="quick-task-list"></ul>
+                        </div>
+
+                        <!-- Next Up Widget -->
+                        <div class="widget widget-next-up">
+                            <div class="widget-header">
+                                <i class="fas fa-forward"></i>
+                                <h3>Next Up</h3>
+                            </div>
+                            <p id="next-activity">Loading schedule...</p>
+                        </div>
+
+                        <!-- Focus Widget -->
+                        <div class="widget widget-focus">
+                            <div class="widget-header">
+                                <i class="fas fa-crosshairs"></i>
+                                <h3>Today's Focus</h3>
+                            </div>
+                            <div class="focus-areas">
+                                <span class="focus-tag">Discipline</span>
+                                <span class="focus-tag">Consistency</span>
+                                <span class="focus-tag">Growth</span>
+                                <span class="focus-tag">Health</span>
+                            </div>
+                        </div>
+
+                        <!-- Weekly Progress Widget -->
+                        <div class="widget widget-weekly">
+                            <div class="widget-header">
+                                <i class="fas fa-chart-bar"></i>
+                                <h3>Weekly Progress</h3>
+                            </div>
+                            <div class="weekly-bars">
+                                <div class="day-bar" data-day="Mon"><div class="bar"></div><span class="day-label">M</span></div>
+                                <div class="day-bar" data-day="Tue"><div class="bar"></div><span class="day-label">T</span></div>
+                                <div class="day-bar" data-day="Wed"><div class="bar"></div><span class="day-label">W</span></div>
+                                <div class="day-bar" data-day="Thu"><div class="bar"></div><span class="day-label">T</span></div>
+                                <div class="day-bar" data-day="Fri"><div class="bar"></div><span class="day-label">F</span></div>
+                                <div class="day-bar" data-day="Sat"><div class="bar"></div><span class="day-label">S</span></div>
+                                <div class="day-bar" data-day="Sun"><div class="bar"></div><span class="day-label">S</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Inspiration Widget -->
+                        <div class="widget widget-inspiration">
+                            <div class="widget-header">
+                                <i class="fas fa-lightbulb"></i>
+                                <h3>Daily Inspiration</h3>
+                            </div>
+                            <blockquote id="daily-quote">"The journey of a thousand miles begins with a single step."</blockquote>
+                            <button id="new-quote-btn" class="btn btn-sm btn-secondary">
+                                <i class="fas fa-sync-alt"></i> New Quote
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== HABITS ========== -->
+                <section id="habits" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-check-double"></i> Habit Tracker</h2>
+                        <button class="btn btn-primary" id="add-habit-btn">
+                            <i class="fas fa-plus"></i> Add Habit
+                        </button>
+                    </header>
+                    
+                    <div class="habit-stats">
+                        <div class="habit-stat-card">
+                            <span class="habit-stat-number" id="total-habits">0</span>
+                            <span class="habit-stat-label">Total Habits</span>
+                        </div>
+                        <div class="habit-stat-card">
+                            <span class="habit-stat-number" id="completed-habits-today">0</span>
+                            <span class="habit-stat-label">Completed Today</span>
+                        </div>
+                        <div class="habit-stat-card">
+                            <span class="habit-stat-number" id="current-habit-streak">0</span>
+                            <span class="habit-stat-label">Best Streak</span>
+                        </div>
+                    </div>
+
+                    <div class="habit-categories">
+                        <button class="habit-category-btn active" data-category="all">All</button>
+                        <button class="habit-category-btn" data-category="health">Health</button>
+                        <button class="habit-category-btn" data-category="productivity">Productivity</button>
+                        <button class="habit-category-btn" data-category="learning">Learning</button>
+                        <button class="habit-category-btn" data-category="fitness">Fitness</button>
+                    </div>
+
+                    <div id="habit-list" class="habit-list"></div>
+                </section>
+
+                <!-- ========== TASKS ========== -->
+                <section id="tasks" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-list-check"></i> Task Manager</h2>
+                    </header>
+
+                    <div class="task-input-container">
+                        <input type="text" id="new-task-input" placeholder="What needs to be done?" class="task-input">
+                        <select id="task-priority" class="task-priority-select">
+                            <option value="low">Low Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="high">High Priority</option>
+                        </select>
+                        <input type="date" id="task-due-date" class="task-date-input">
+                        <button id="add-task-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Task</button>
+                    </div>
+
+                    <div class="task-filters">
+                        <button class="task-filter-btn active" data-filter="all">All <span class="count" id="count-all">0</span></button>
+                        <button class="task-filter-btn" data-filter="today">Today <span class="count" id="count-today">0</span></button>
+                        <button class="task-filter-btn" data-filter="upcoming">Upcoming <span class="count" id="count-upcoming">0</span></button>
+                        <button class="task-filter-btn" data-filter="completed">Completed <span class="count" id="count-completed">0</span></button>
+                    </div>
+
+                    <ul id="task-list" class="task-list"></ul>
+                </section>
+
+                <!-- ========== POMODORO ========== -->
+                <section id="pomodoro" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-clock"></i> Pomodoro Timer</h2>
+                    </header>
+
+                    <div class="pomodoro-container">
+                        <div class="pomodoro-display">
+                            <svg class="pomodoro-ring" viewBox="0 0 200 200">
+                                <defs>
+                                    <linearGradient id="pomodoro-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:var(--primary)"/>
+                                        <stop offset="100%" style="stop-color:var(--secondary)"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle class="ring-bg" cx="100" cy="100" r="90"/>
+                                <circle class="ring-progress" cx="100" cy="100" r="90" id="pomodoro-ring"/>
+                            </svg>
+                            <div class="pomodoro-time">
+                                <span id="pomodoro-minutes">25</span>:<span id="pomodoro-seconds">00</span>
+                            </div>
+                            <div class="pomodoro-label" id="pomodoro-label">Focus Time</div>
+                        </div>
+
+                        <div class="pomodoro-controls">
+                            <button id="pomodoro-pause" class="pomodoro-btn pomodoro-btn-secondary" style="display:none;">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button id="pomodoro-start" class="pomodoro-btn pomodoro-btn-main">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button id="pomodoro-reset" class="pomodoro-btn pomodoro-btn-secondary">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+
+                        <div class="pomodoro-settings">
+                            <div class="setting-group">
+                                <label>Focus</label>
+                                <input type="number" id="focus-duration" value="25" min="1" max="60">
+                                <span>min</span>
+                            </div>
+                            <div class="setting-group">
+                                <label>Short</label>
+                                <input type="number" id="short-break" value="5" min="1" max="30">
+                                <span>min</span>
+                            </div>
+                            <div class="setting-group">
+                                <label>Long</label>
+                                <input type="number" id="long-break" value="15" min="1" max="60">
+                                <span>min</span>
+                            </div>
+                        </div>
+
+                        <div class="pomodoro-stats">
+                            <div class="pomodoro-stat">
+                                <span class="stat-num" id="sessions-today">0</span>
+                                <span class="stat-lbl">Sessions Today</span>
+                            </div>
+                            <div class="pomodoro-stat">
+                                <span class="stat-num" id="total-focus-time">0</span>
+                                <span class="stat-lbl">Total Focus (min)</span>
+                            </div>
+                        </div>
+
+                        <div class="pomodoro-sessions">
+                            <span class="session-dot" data-session="1"></span>
+                            <span class="session-dot" data-session="2"></span>
+                            <span class="session-dot" data-session="3"></span>
+                            <span class="session-dot" data-session="4"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== SCHEDULE ========== -->
+                <section id="schedule" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-calendar-days"></i> Master Schedule</h2>
+                    </header>
+
+                    <div class="schedule-tabs">
+                        <button class="schedule-tab active" data-view="daily">Daily</button>
+                        <button class="schedule-tab" data-view="weekly">Weekly</button>
+                    </div>
+
+                    <div id="daily-schedule" class="schedule-view active">
+                        <div class="schedule-timeline">
+                            <div class="schedule-block">
+                                <div class="time-slot">5:00 AM</div>
+                                <div class="activity-content">
+                                    <h4>Wake Up & Hydration</h4>
+                                    <p>Start your day with 500ml water</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">5:15 AM</div>
+                                <div class="activity-content">
+                                    <h4>Height Exercises & Stretching</h4>
+                                    <p>45 minutes of targeted exercises</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">6:00 AM</div>
+                                <div class="activity-content">
+                                    <h4>Bodybuilding Training</h4>
+                                    <p>Alternate muscle groups daily</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">7:30 AM</div>
+                                <div class="activity-content">
+                                    <h4>Language Learning (Japanese)</h4>
+                                    <p>Vocabulary, grammar, listening</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">9:00 AM</div>
+                                <div class="activity-content">
+                                    <h4>Full Stack Development</h4>
+                                    <p>Deep work on projects</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">12:00 PM</div>
+                                <div class="activity-content">
+                                    <h4>Lunch & Break</h4>
+                                    <p>Rest and recharge</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">1:00 PM</div>
+                                <div class="activity-content">
+                                    <h4>English Enhancement</h4>
+                                    <p>Speaking, writing, listening</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">5:00 PM</div>
+                                <div class="activity-content">
+                                    <h4>Combat Sports Training</h4>
+                                    <p>Boxing / MMA / Karate rotation</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">7:30 PM</div>
+                                <div class="activity-content">
+                                    <h4>Evening Review</h4>
+                                    <p>Language & coding review</p>
+                                </div>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time-slot">9:00 PM</div>
+                                <div class="activity-content">
+                                    <h4>Preparation & Journaling</h4>
+                                    <p>Plan tomorrow, reflect today</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="weekly-schedule" class="schedule-view">
+                        <div class="table-container">
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                        <th>Sun</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>5-7:30</td>
+                                        <td>Height + Chest</td>
+                                        <td>Height + Back</td>
+                                        <td>Height + Legs</td>
+                                        <td>Height + Shoulders</td>
+                                        <td>Height + Full</td>
+                                        <td>Height + Weak</td>
+                                        <td>Rest</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7:30-12</td>
+                                        <td>Japanese + HTML</td>
+                                        <td>Japanese + JS</td>
+                                        <td>Japanese + React</td>
+                                        <td>Japanese + Node</td>
+                                        <td>Japanese + Projects</td>
+                                        <td>Japanese + Review</td>
+                                        <td>Immersion</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12-5</td>
+                                        <td>English + Dev</td>
+                                        <td>English + Dev</td>
+                                        <td>English + Dev</td>
+                                        <td>English + Dev</td>
+                                        <td>English + Dev</td>
+                                        <td>Portfolio</td>
+                                        <td>Rest</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5-7</td>
+                                        <td>Boxing</td>
+                                        <td>MMA</td>
+                                        <td>Karate</td>
+                                        <td>Boxing</td>
+                                        <td>MMA</td>
+                                        <td>Karate</td>
+                                        <td>Recovery</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7-10</td>
+                                        <td>Dinner + Review</td>
+                                        <td>Dinner + Review</td>
+                                        <td>Dinner + Review</td>
+                                        <td>Dinner + Review</td>
+                                        <td>Dinner + Review</td>
+                                        <td>Dinner + Plan</td>
+                                        <td>Planning</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== LANGUAGES ========== -->
+                <section id="languages" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-language"></i> Language Learning</h2>
+                    </header>
+
+                    <div class="language-cards">
+                        <div class="language-card">
+                            <div class="language-header">
+                                <div class="language-flag">🇯🇵</div>
+                                <div>
+                                    <h3>Japanese</h3>
+                                    <span class="language-level">N5-N4 Level</span>
+                                </div>
+                            </div>
+                            <div class="language-progress-bar">
+                                <div class="progress-fill" style="width: 35%"></div>
+                            </div>
+                            <div class="language-stats">
+                                <div class="lang-stat">
+                                    <span class="lang-stat-num" id="jp-words">0</span>
+                                    <span class="lang-stat-lbl">Words Learned</span>
+                                </div>
+                                <div class="lang-stat">
+                                    <span class="lang-stat-num" id="jp-kanji">0</span>
+                                    <span class="lang-stat-lbl">Kanji</span>
+                                </div>
+                            </div>
+                            <div class="language-daily">
+                                <h4>Daily Goals</h4>
+                                <ul>
+                                    <li><i class="fas fa-book"></i> 15 new vocabulary words</li>
+                                    <li><i class="fas fa-pen"></i> 15 min writing practice</li>
+                                    <li><i class="fas fa-headphones"></i> 20 min listening</li>
+                                    <li><i class="fas fa-comments"></i> 15 min speaking</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="language-card">
+                            <div class="language-header">
+                                <div class="language-flag">🇬🇧</div>
+                                <div>
+                                    <h3>English</h3>
+                                    <span class="language-level">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="language-progress-bar">
+                                <div class="progress-fill" style="width: 72%"></div>
+                            </div>
+                            <div class="language-stats">
+                                <div class="lang-stat">
+                                    <span class="lang-stat-num" id="en-words">0</span>
+                                    <span class="lang-stat-lbl">Advanced Words</span>
+                                </div>
+                                <div class="lang-stat">
+                                    <span class="lang-stat-num" id="en-grammar">0</span>
+                                    <span class="lang-stat-lbl">Grammar Points</span>
+                                </div>
+                            </div>
+                            <div class="language-daily">
+                                <h4>Daily Goals</h4>
+                                <ul>
+                                    <li><i class="fas fa-book"></i> 10 new vocabulary words</li>
+                                    <li><i class="fas fa-microphone"></i> 15 min pronunciation</li>
+                                    <li><i class="fas fa-pen-fancy"></i> Daily journal entry</li>
+                                    <li><i class="fas fa-play-circle"></i> Technical tutorials</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="language-tools">
+                        <h3><i class="fas fa-tools"></i> Learning Tools</h3>
+                        <div class="tool-grid">
+                            <div class="tool-card-mini"><i class="fas fa-spell-check"></i><span>Flashcards</span></div>
+                            <div class="tool-card-mini"><i class="fas fa-language"></i><span>Translation</span></div>
+                            <div class="tool-card-mini"><i class="fas fa-podcast"></i><span>Podcasts</span></div>
+                            <div class="tool-card-mini"><i class="fas fa-video"></i><span>Videos</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== DEVELOPMENT ========== -->
+                <section id="development" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-laptop-code"></i> Full Stack Development</h2>
+                    </header>
+
+                    <div class="dev-roadmap">
+                        <div class="roadmap-phase current">
+                            <div class="phase-marker"><i class="fas fa-code"></i></div>
+                            <div class="phase-content">
+                                <h3>Phase 1: Foundation (Weeks 1-4)</h3>
+                                <div class="phase-progress">
+                                    <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                                    <span>75%</span>
+                                </div>
+                                <ul class="phase-items">
+                                    <li><i class="fas fa-check-circle"></i> HTML5 & CSS3 Mastery</li>
+                                    <li><i class="fas fa-check-circle"></i> Responsive Design</li>
+                                    <li><i class="fas fa-spinner"></i> JavaScript ES6+</li>
+                                    <li><i class="far fa-circle"></i> Git & GitHub</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-phase">
+                            <div class="phase-marker"><i class="fas fa-lock"></i></div>
+                            <div class="phase-content">
+                                <h3>Phase 2: Frontend (Weeks 5-8)</h3>
+                                <div class="phase-progress">
+                                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    <span>0%</span>
+                                </div>
+                                <ul class="phase-items">
+                                    <li><i class="far fa-circle"></i> React Fundamentals</li>
+                                    <li><i class="far fa-circle"></i> State Management</li>
+                                    <li><i class="far fa-circle"></i> Next.js Framework</li>
+                                    <li><i class="far fa-circle"></i> TypeScript</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-phase">
+                            <div class="phase-marker"><i class="fas fa-lock"></i></div>
+                            <div class="phase-content">
+                                <h3>Phase 3: Backend (Weeks 9-12)</h3>
+                                <div class="phase-progress">
+                                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    <span>0%</span>
+                                </div>
+                                <ul class="phase-items">
+                                    <li><i class="far fa-circle"></i> Node.js & Express</li>
+                                    <li><i class="far fa-circle"></i> MongoDB & SQL</li>
+                                    <li><i class="far fa-circle"></i> REST APIs</li>
+                                    <li><i class="far fa-circle"></i> Authentication</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-phase">
+                            <div class="phase-marker"><i class="fas fa-lock"></i></div>
+                            <div class="phase-content">
+                                <h3>Phase 4: Deployment (Weeks 13-16)</h3>
+                                <div class="phase-progress">
+                                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    <span>0%</span>
+                                </div>
+                                <ul class="phase-items">
+                                    <li><i class="far fa-circle"></i> DevOps Basics</li>
+                                    <li><i class="far fa-circle"></i> Docker</li>
+                                    <li><i class="far fa-circle"></i> CI/CD</li>
+                                    <li><i class="far fa-circle"></i> Cloud Deployment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dev-stats">
+                        <div class="dev-stat-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <span class="dev-stat-num" id="projects-completed">0</span>
+                            <span class="dev-stat-lbl">Projects Built</span>
+                        </div>
+                        <div class="dev-stat-card">
+                            <i class="fas fa-clock"></i>
+                            <span class="dev-stat-num" id="coding-hours">0</span>
+                            <span class="dev-stat-lbl">Coding Hours</span>
+                        </div>
+                        <div class="dev-stat-card">
+                            <i class="fab fa-github"></i>
+                            <span class="dev-stat-num" id="github-commits">0</span>
+                            <span class="dev-stat-lbl">Git Commits</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== PHYSICAL TRAINING ========== -->
+                <section id="physical" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-dumbbell"></i> Physical Training</h2>
+                    </header>
+
+                    <div class="training-tabs">
+                        <button class="training-tab active" data-training="bodybuilding">Bodybuilding</button>
+                        <button class="training-tab" data-training="combat">Combat Sports</button>
+                        <button class="training-tab" data-training="cardio">Cardio & Mobility</button>
+                    </div>
+
+                    <div id="bodybuilding-training" class="training-content active">
+                        <div class="training-schedule">
+                            <div class="training-day">
+                                <h4>Monday</h4>
+                                <div class="muscle-group">Chest & Triceps</div>
+                                <ul>
+                                    <li>Bench Press: 4x8-12</li>
+                                    <li>Incline Dumbbell: 3x10-12</li>
+                                    <li>Cable Flyes: 3x12-15</li>
+                                    <li>Tricep Pushdown: 4x10-12</li>
+                                </ul>
+                            </div>
+                            <div class="training-day">
+                                <h4>Tuesday</h4>
+                                <div class="muscle-group">Back & Biceps</div>
+                                <ul>
+                                    <li>Pull-ups: 4x8-10</li>
+                                    <li>Barbell Rows: 4x8-10</li>
+                                    <li>Lat Pulldown: 3x10-12</li>
+                                    <li>Barbell Curl: 4x10-12</li>
+                                </ul>
+                            </div>
+                            <div class="training-day">
+                                <h4>Wednesday</h4>
+                                <div class="muscle-group">Legs & Core</div>
+                                <ul>
+                                    <li>Squats: 4x8-12</li>
+                                    <li>Romanian Deadlift: 4x10</li>
+                                    <li>Leg Press: 3x12-15</li>
+                                    <li>Plank: 3x60s</li>
+                                </ul>
+                            </div>
+                            <div class="training-day">
+                                <h4>Thursday</h4>
+                                <div class="muscle-group">Shoulders & Arms</div>
+                                <ul>
+                                    <li>Overhead Press: 4x8-10</li>
+                                    <li>Lateral Raises: 4x12-15</li>
+                                    <li>Face Pulls: 3x15</li>
+                                    <li>Preacher Curl: 3x12</li>
+                                </ul>
+                            </div>
+                            <div class="training-day">
+                                <h4>Friday</h4>
+                                <div class="muscle-group">Full Body</div>
+                                <ul>
+                                    <li>Deadlift: 4x5</li>
+                                    <li>Bench Press: 3x8</li>
+                                    <li>Pull-ups: 3xMax</li>
+                                    <li>Walking Lunges: 3x12</li>
+                                </ul>
+                            </div>
+                            <div class="training-day">
+                                <h4>Saturday</h4>
+                                <div class="muscle-group">Weak Points</div>
+                                <ul>
+                                    <li>Target lagging muscles</li>
+                                    <li>Extra volume on weak areas</li>
+                                    <li>Technique work</li>
+                                </ul>
+                            </div>
+                            <div class="training-day rest-day">
+                                <h4>Sunday</h4>
+                                <div class="muscle-group">Rest & Recovery</div>
+                                <ul>
+                                    <li>Light stretching</li>
+                                    <li>Foam rolling</li>
+                                    <li>Active recovery</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="combat-training" class="training-content">
+                        <div class="combat-schedule">
+                            <div class="combat-card">
+                                <h4><i class="fas fa-hand-fist"></i> Monday / Thursday</h4>
+                                <h5>Boxing</h5>
+                                <ul>
+                                    <li>Warm-up: 10 min jump rope</li>
+                                    <li>Shadow boxing: 3x3 min</li>
+                                    <li>Bag work: 4x3 min</li>
+                                    <li>Sparring/Drills: 30 min</li>
+                                    <li>Conditioning: 15 min</li>
+                                </ul>
+                            </div>
+                            <div class="combat-card">
+                                <h4><i class="fas fa-user-injured"></i> Tuesday / Friday</h4>
+                                <h5>MMA / UFC</h5>
+                                <ul>
+                                    <li>Warm-up: 10 min</li>
+                                    <li>Grappling: 45 min</li>
+                                    <li>Striking combos: 30 min</li>
+                                    <li>Cage work: 20 min</li>
+                                    <li>Conditioning: 15 min</li>
+                                </ul>
+                            </div>
+                            <div class="combat-card">
+                                <h4><i class="fas fa-person-running"></i> Wednesday / Saturday</h4>
+                                <h5>Karate</h5>
+                                <ul>
+                                    <li>Kata practice: 30 min</li>
+                                    <li>Drills & technique: 45 min</li>
+                                    <li>Sparring: 30 min</li>
+                                    <li>Philosophy study: 15 min</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cardio-training" class="training-content">
+                        <div class="combat-schedule">
+                            <div class="combat-card">
+                                <h4><i class="fas fa-heartbeat"></i> Morning Cardio (Optional)</h4>
+                                <ul>
+                                    <li>Jump rope: 15 min</li>
+                                    <li>HIIT: 20 min</li>
+                                    <li>Running: 30 min</li>
+                                </ul>
+                            </div>
+                            <div class="combat-card">
+                                <h4><i class="fas fa-spa"></i> Mobility Work (Daily)</h4>
+                                <ul>
+                                    <li>Hip flexor stretch: 5 min</li>
+                                    <li>Shoulder mobility: 5 min</li>
+                                    <li>Spinal articulation: 5 min</li>
+                                    <li>Foam rolling: 10 min</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="height-exercises">
+                        <h3><i class="fas fa-arrows-alt-v"></i> Height Increasing Exercises</h3>
+                        <div class="height-routine">
+                            <div class="height-exercise"><h4>Hanging</h4><p>2-3 sets x 30-60s</p></div>
+                            <div class="height-exercise"><h4>Cat-Cow Stretch</h4><p>3 sets x 15 reps</p></div>
+                            <div class="height-exercise"><h4>Pelvic Shifts</h4><p>3 sets x 15 reps</p></div>
+                            <div class="height-exercise"><h4>Cobra Stretch</h4><p>3 sets x 30s</p></div>
+                            <div class="height-exercise"><h4>Swimming</h4><p>30-45 minutes</p></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== DIET ========== -->
+                <section id="diet" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-utensils"></i> Nutrition & Diet</h2>
+                    </header>
+
+                    <div class="diet-tabs">
+                        <button class="diet-tab active" data-tab="nutrients">Nutrients</button>
+                        <button class="diet-tab" data-tab="food-search">Food Search</button>
+                        <button class="diet-tab" data-tab="diet-plan">My Diet Plan</button>
+                        <button class="diet-tab" data-tab="bulking">Bulking</button>
+                        <button class="diet-tab" data-tab="cutting">Cutting</button>
+                    </div>
+
+                    <div id="nutrients-diet" class="diet-content active">
+                        <div class="nutrition-overview">
+                            <div class="nutrition-card">
+                                <div class="nutrition-icon"><i class="fas fa-fire"></i></div>
+                                <div class="nutrition-info">
+                                    <span class="nutrition-value" id="daily-calories">0</span>
+                                    <span class="nutrition-label">Calories</span>
+                                </div>
+                            </div>
+                            <div class="nutrition-card">
+                                <div class="nutrition-icon protein"><i class="fas fa-drumstick-bite"></i></div>
+                                <div class="nutrition-info">
+                                    <span class="nutrition-value" id="daily-protein">0g</span>
+                                    <span class="nutrition-label">Protein</span>
+                                </div>
+                            </div>
+                            <div class="nutrition-card">
+                                <div class="nutrition-icon carbs"><i class="fas fa-bread-slice"></i></div>
+                                <div class="nutrition-info">
+                                    <span class="nutrition-value" id="daily-carbs">0g</span>
+                                    <span class="nutrition-label">Carbs</span>
+                                </div>
+                            </div>
+                            <div class="nutrition-card">
+                                <div class="nutrition-icon fats"><i class="fas fa-oil-can"></i></div>
+                                <div class="nutrition-info">
+                                    <span class="nutrition-value" id="daily-fats">0g</span>
+                                    <span class="nutrition-label">Fats</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="food-categories">
+                            <button class="food-category-btn active" data-category="all">All Foods</button>
+                            <button class="food-category-btn" data-category="proteins">Proteins</button>
+                            <button class="food-category-btn" data-category="carbs">Carbs</button>
+                            <button class="food-category-btn" data-category="fruits">Fruits</button>
+                            <button class="food-category-btn" data-category="vegetables">Vegetables</button>
+                            <button class="food-category-btn" data-category="dairy">Dairy</button>
+                            <button class="food-category-btn" data-category="fats">Fats & Oils</button>
+                        </div>
+
+                        <div class="food-database-grid" id="food-database-grid"></div>
+                    </div>
+
+                    <div id="food-search-diet" class="diet-content">
+                        <div class="food-search-container">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="food-search-input" placeholder="Search any food..." autocomplete="off">
+                                <button id="clear-search" class="clear-search"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="search-results" id="search-results"></div>
+                        </div>
+
+                        <div class="selected-food-nutrition" id="selected-food-nutrition" style="display: none;">
+                            <div class="nutrition-detail-header">
+                                <h3 id="selected-food-name">Food Name</h3>
+                                <button class="btn btn-primary btn-sm" id="add-to-diet-btn">
+                                    <i class="fas fa-plus"></i> Add to Diet Plan
+                                </button>
+                            </div>
+                            <div class="nutrition-detail-grid">
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-calories">0</span>
+                                    <span class="detail-label">Calories</span>
+                                </div>
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-protein">0g</span>
+                                    <span class="detail-label">Protein</span>
+                                </div>
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-carbs">0g</span>
+                                    <span class="detail-label">Carbs</span>
+                                </div>
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-fats">0g</span>
+                                    <span class="detail-label">Fats</span>
+                                </div>
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-fiber">0g</span>
+                                    <span class="detail-label">Fiber</span>
+                                </div>
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-sugar">0g</span>
+                                    <span class="detail-label">Sugar</span>
+                                </div>
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-sodium">0mg</span>
+                                    <span class="detail-label">Sodium</span>
+                                </div>
+                                <div class="nutrition-detail-card">
+                                    <span class="detail-value" id="detail-cholesterol">0mg</span>
+                                    <span class="detail-label">Cholesterol</span>
+                                </div>
+                            </div>
+                            <div class="serving-size-selector">
+                                <label>Serving Size:</label>
+                                <input type="number" id="serving-size" value="100" min="1" max="1000">
+                                <span>grams</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="diet-plan-diet" class="diet-content">
+                        <div class="diet-plan-header">
+                            <h3><i class="fas fa-calendar-plus"></i> My Daily Diet Plan</h3>
+                            <div class="diet-plan-actions">
+                                <button class="btn btn-secondary btn-sm" id="clear-diet-plan">
+                                    <i class="fas fa-trash"></i> Clear All
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="diet-plan-summary">
+                            <div class="plan-summary-item">
+                                <span class="plan-summary-value" id="plan-total-calories">0</span>
+                                <span class="plan-summary-label">Total Calories</span>
+                            </div>
+                            <div class="plan-summary-item">
+                                <span class="plan-summary-value" id="plan-total-protein">0g</span>
+                                <span class="plan-summary-label">Protein</span>
+                            </div>
+                            <div class="plan-summary-item">
+                                <span class="plan-summary-value" id="plan-total-carbs">0g</span>
+                                <span class="plan-summary-label">Carbs</span>
+                            </div>
+                            <div class="plan-summary-item">
+                                <span class="plan-summary-value" id="plan-total-fats">0g</span>
+                                <span class="plan-summary-label">Fats</span>
+                            </div>
+                        </div>
+
+                        <div class="diet-plan-progress">
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span>Calories</span>
+                                    <span id="cal-progress-text">0 / 2500</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" id="cal-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span>Protein</span>
+                                    <span id="protein-progress-text">0g / 150g</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill protein" id="protein-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span>Carbs</span>
+                                    <span id="carbs-progress-text">0g / 250g</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill carbs" id="carbs-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span>Fats</span>
+                                    <span id="fats-progress-text">0g / 70g</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill fats" id="fats-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="diet-plan-meals">
+                            <div class="meal-section">
+                                <div class="meal-section-header">
+                                    <h4><i class="fas fa-coffee"></i> Breakfast</h4>
+                                    <span class="meal-calories" id="breakfast-calories">0 cal</span>
+                                </div>
+                                <div class="meal-items" id="breakfast-items"></div>
+                            </div>
+                            <div class="meal-section">
+                                <div class="meal-section-header">
+                                    <h4><i class="fas fa-utensils"></i> Lunch</h4>
+                                    <span class="meal-calories" id="lunch-calories">0 cal</span>
+                                </div>
+                                <div class="meal-items" id="lunch-items"></div>
+                            </div>
+                            <div class="meal-section">
+                                <div class="meal-section-header">
+                                    <h4><i class="fas fa-apple-alt"></i> Snacks</h4>
+                                    <span class="meal-calories" id="snacks-calories">0 cal</span>
+                                </div>
+                                <div class="meal-items" id="snacks-items"></div>
+                            </div>
+                            <div class="meal-section">
+                                <div class="meal-section-header">
+                                    <h4><i class="fas fa-moon"></i> Dinner</h4>
+                                    <span class="meal-calories" id="dinner-calories">0 cal</span>
+                                </div>
+                                <div class="meal-items" id="dinner-items"></div>
+                            </div>
+                        </div>
+
+                        <div class="add-to-meal-selector" id="add-to-meal-selector" style="display: none;">
+                            <h4>Add to Meal:</h4>
+                            <div class="meal-buttons">
+                                <button class="meal-btn" data-meal="breakfast">Breakfast</button>
+                                <button class="meal-btn" data-meal="lunch">Lunch</button>
+                                <button class="meal-btn" data-meal="snacks">Snacks</button>
+                                <button class="meal-btn" data-meal="dinner">Dinner</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bulking-diet" class="diet-content">
+                        <div class="diet-summary">
+                            <div class="diet-macro">
+                                <span class="macro-value">3000</span>
+                                <span class="macro-label">Target Calories</span>
+                            </div>
+                            <div class="diet-macro">
+                                <span class="macro-value">180g</span>
+                                <span class="macro-label">Protein</span>
+                            </div>
+                            <div class="diet-macro">
+                                <span class="macro-value">350g</span>
+                                <span class="macro-label">Carbs</span>
+                            </div>
+                            <div class="diet-macro">
+                                <span class="macro-value">80g</span>
+                                <span class="macro-label">Fats</span>
+                            </div>
+                        </div>
+
+                        <div class="meals-container">
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <h4>Meal 1 - Post Workout</h4>
+                                    <span class="meal-time">6:00 AM</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li>Whey Protein: 1 scoop</li>
+                                    <li>Oats: 80g with berries</li>
+                                    <li>Banana: 1 medium</li>
+                                </ul>
+                                <div class="meal-macros"><span>470 cal</span><span>34g protein</span></div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <h4>Meal 2 - Breakfast</h4>
+                                    <span class="meal-time">8:00 AM</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li>Eggs: 4 whole</li>
+                                    <li>Whole grain toast: 2 slices</li>
+                                    <li>Avocado: 1/2</li>
+                                </ul>
+                                <div class="meal-macros"><span>550 cal</span><span>32g protein</span></div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <h4>Meal 3 - Lunch</h4>
+                                    <span class="meal-time">12:00 PM</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li>Chicken breast: 200g</li>
+                                    <li>Brown rice: 150g</li>
+                                    <li>Mixed vegetables: 200g</li>
+                                </ul>
+                                <div class="meal-macros"><span>580 cal</span><span>62g protein</span></div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <h4>Meal 4 - Snack</h4>
+                                    <span class="meal-time">3:00 PM</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li>Greek yogurt: 200g</li>
+                                    <li>Almonds: 30g</li>
+                                    <li>Honey: 1 tbsp</li>
+                                </ul>
+                                <div class="meal-macros"><span>350 cal</span><span>26g protein</span></div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <h4>Meal 5 - Pre Workout</h4>
+                                    <span class="meal-time">4:30 PM</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li>Sweet potato: 200g</li>
+                                    <li>Salmon: 150g</li>
+                                </ul>
+                                <div class="meal-macros"><span>450 cal</span><span>35g protein</span></div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <h4>Meal 6 - Dinner</h4>
+                                    <span class="meal-time">7:30 PM</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li>Lean beef: 200g</li>
+                                    <li>Quinoa: 150g</li>
+                                    <li>Steamed broccoli: 150g</li>
+                                </ul>
+                                <div class="meal-macros"><span>600 cal</span><span>55g protein</span></div>
+                            </div>
+                        </div>
+
+                        <div class="diet-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Pro Tips</h4>
+                            <ul>
+                                <li>Drink 3-4 liters of water daily</li>
+                                <li>Consistent meal timing for metabolism</li>
+                                <li>Don't fear healthy fats - crucial for hormones</li>
+                                <li>Casein shake before bed for recovery</li>
+                                <li>Track weight weekly, adjust calories as needed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="cutting-diet" class="diet-content">
+                        <div class="diet-summary">
+                            <div class="diet-macro">
+                                <span class="macro-value">2200</span>
+                                <span class="macro-label">Target Calories</span>
+                            </div>
+                            <div class="diet-macro">
+                                <span class="macro-value">180g</span>
+                                <span class="macro-label">Protein</span>
+                            </div>
+                            <div class="diet-macro">
+                                <span class="macro-value">200g</span>
+                                <span class="macro-label">Carbs</span>
+                            </div>
+                            <div class="diet-macro">
+                                <span class="macro-value">55g</span>
+                                <span class="macro-label">Fats</span>
+                            </div>
+                        </div>
+                        <p style="text-align: center; color: var(--text-muted); padding: 60px;">Cutting plan details coming soon...</p>
+                    </div>
+
+                    <div id="calculator-diet" class="diet-content">
+                        <div class="calculator-card">
+                            <h4><i class="fas fa-calculator"></i> BMI Calculator</h4>
+                            <div class="calc-inputs">
+                                <input type="number" id="bmi-weight" placeholder="Weight (kg)">
+                                <input type="number" id="bmi-height" placeholder="Height (cm)">
+                            </div>
+                            <button id="calc-bmi" class="btn btn-primary">Calculate</button>
+                            <div id="bmi-result" class="calc-result"></div>
+                        </div>
+                        <div class="calculator-card">
+                            <h4><i class="fas fa-fire"></i> TDEE Calculator</h4>
+                            <div class="calc-inputs">
+                                <input type="number" id="tdee-weight" placeholder="Weight (kg)">
+                                <input type="number" id="tdee-height" placeholder="Height (cm)">
+                                <input type="number" id="tdee-age" placeholder="Age">
+                                <select id="tdee-activity">
+                                    <option value="1.2">Sedentary</option>
+                                    <option value="1.375">Light Activity</option>
+                                    <option value="1.55" selected>Moderate Activity</option>
+                                    <option value="1.725">Very Active</option>
+                                    <option value="1.9">Extra Active</option>
+                                </select>
+                            </div>
+                            <button id="calc-tdee" class="btn btn-primary">Calculate</button>
+                            <div id="tdee-result" class="calc-result"></div>
+                        </div>
+                        <div class="calculator-card">
+                            <h4><i class="fas fa-water"></i> Water Intake Tracker</h4>
+                            <div class="water-tracker">
+                                <div class="water-cups">
+                                    <span class="water-cup" data-cup="1"></span>
+                                    <span class="water-cup" data-cup="2"></span>
+                                    <span class="water-cup" data-cup="3"></span>
+                                    <span class="water-cup" data-cup="4"></span>
+                                    <span class="water-cup" data-cup="5"></span>
+                                    <span class="water-cup" data-cup="6"></span>
+                                    <span class="water-cup" data-cup="7"></span>
+                                    <span class="water-cup" data-cup="8"></span>
+                                </div>
+                                <p><span id="water-consumed">0</span> / 8 glasses</p>
+                                <button id="reset-water" class="btn btn-sm btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== PROFILE & SETTINGS ========== -->
+                <section id="profile" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-user-cog"></i> Profile & Settings</h2>
+                    </header>
+
+                    <div class="profile-tabs">
+                        <button class="profile-tab active" data-tab="profile-info">Profile</button>
+                        <button class="profile-tab" data-tab="level-progress">Level Progress</button>
+                        <button class="profile-tab" data-tab="custom-exercises">Custom Exercises</button>
+                        <button class="profile-tab" data-tab="custom-combat">Combat Skills</button>
+                        <button class="profile-tab" data-tab="data-management">Data & Reset</button>
+                    </div>
+
+                    <!-- Profile Info Tab -->
+                    <div id="profile-info" class="profile-content active">
+                        <div class="profile-card">
+                            <div class="profile-avatar">
+                                <div class="avatar-circle" id="profile-avatar-display">U</div>
+                                <button class="avatar-edit-btn" onclick="Profile.editAvatar()">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            <div class="profile-details">
+                                <div class="profile-field">
+                                    <label>Username</label>
+                                    <input type="text" id="profile-username" placeholder="Enter username..." value="Warrior">
+                                </div>
+                                <div class="profile-field">
+                                    <label>Email</label>
+                                    <input type="email" id="profile-email" placeholder="your@email.com">
+                                </div>
+                                <div class="profile-field">
+                                    <label>Bio</label>
+                                    <textarea id="profile-bio" placeholder="Tell us about yourself..."></textarea>
+                                </div>
+                                <button class="btn btn-primary" onclick="Profile.saveProfile()">
+                                    <i class="fas fa-save"></i> Save Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Level Progress Tab -->
+                    <div id="level-progress" class="profile-content">
+                        <div class="level-progress-card">
+                            <div class="current-level-display">
+                                <div class="level-badge-large" id="profile-level-badge">
+                                    <span class="level-emoji-lg" id="profile-level-emoji">🌱</span>
+                                    <span class="level-number-lg" id="profile-level-number">1</span>
+                                </div>
+                                <div class="level-details">
+                                    <h3 id="profile-level-name">Beginner</h3>
+                                    <p class="level-title" id="profile-level-title">Just Starting</p>
+                                </div>
+                            </div>
+                            <div class="xp-progress-section">
+                                <div class="xp-progress-header">
+                                    <span id="profile-xp-current">0 XP</span>
+                                    <span id="profile-xp-next">100 XP to Level 2</span>
+                                </div>
+                                <div class="xp-progress-bar-large">
+                                    <div class="xp-progress-fill-large" id="profile-xp-fill" style="width: 0%"></div>
+                                </div>
+                                <div class="xp-percentage" id="profile-xp-percent">0%</div>
+                            </div>
+                            <div class="level-stats">
+                                <div class="level-stat">
+                                    <i class="fas fa-star"></i>
+                                    <div>
+                                        <span id="profile-total-xp">0</span>
+                                        <small>Total XP Earned</small>
+                                    </div>
+                                </div>
+                                <div class="level-stat">
+                                    <i class="fas fa-trophy"></i>
+                                    <div>
+                                        <span id="profile-achievements">0</span>
+                                        <small>Achievements</small>
+                                    </div>
+                                </div>
+                                <div class="level-stat">
+                                    <i class="fas fa-fire"></i>
+                                    <div>
+                                        <span id="profile-streak">0</span>
+                                        <small>Day Streak</small>
+                                    </div>
+                                </div>
+                                <div class="level-stat">
+                                    <i class="fas fa-chart-line"></i>
+                                    <div>
+                                        <span id="profile-next-level">Level 2</span>
+                                        <small>Next Level</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="levels-roadmap">
+                            <h3><i class="fas fa-map"></i> Level Roadmap</h3>
+                            <div class="roadmap-container" id="levels-roadmap"></div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Exercises Tab -->
+                    <div id="custom-exercises" class="profile-content">
+                        <div class="custom-section-header">
+                            <h3><i class="fas fa-dumbbell"></i> My Custom Exercises</h3>
+                            <button class="btn btn-primary" onclick="Profile.showAddExerciseModal()">
+                                <i class="fas fa-plus"></i> Add Exercise
+                            </button>
+                        </div>
+                        <div class="exercise-categories">
+                            <div class="exercise-category">
+                                <h4><i class="fas fa-running"></i> Cardio</h4>
+                                <ul class="exercise-list" id="custom-cardio-list"></ul>
+                            </div>
+                            <div class="exercise-category">
+                                <h4><i class="fas fa-weight"></i> Strength</h4>
+                                <ul class="exercise-list" id="custom-strength-list"></ul>
+                            </div>
+                            <div class="exercise-category">
+                                <h4><i class="fas fa-child"></i> Flexibility</h4>
+                                <ul class="exercise-list" id="custom-flexibility-list"></ul>
+                            </div>
+                            <div class="exercise-category">
+                                <h4><i class="fas fa-bolt"></i> HIIT</h4>
+                                <ul class="exercise-list" id="custom-hiit-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Combat Skills Tab -->
+                    <div id="custom-combat" class="profile-content">
+                        <div class="custom-section-header">
+                            <h3><i class="fas fa-user-injured"></i> Combat Skills Library</h3>
+                            <button class="btn btn-primary" onclick="Profile.showAddCombatSkillModal()">
+                                <i class="fas fa-plus"></i> Add Skill
+                            </button>
+                        </div>
+                        <div class="combat-skill-categories">
+                            <div class="combat-category">
+                                <h4><i class="fas fa-hand-fist"></i> Striking</h4>
+                                <ul class="skill-list" id="combat-striking-list"></ul>
+                            </div>
+                            <div class="combat-category">
+                                <h4><i class="fas fa-hand-paper"></i> Grappling</h4>
+                                <ul class="skill-list" id="combat-grappling-list"></ul>
+                            </div>
+                            <div class="combat-category">
+                                <h4><i class="fas fa-shield-alt"></i> Defense</h4>
+                                <ul class="skill-list" id="combat-defense-list"></ul>
+                            </div>
+                            <div class="combat-category">
+                                <h4><i class="fas fa-feather-alt"></i> Footwork</h4>
+                                <ul class="skill-list" id="combat-footwork-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Management Tab -->
+                    <div id="data-management" class="profile-content">
+                        <div class="data-section">
+                            <h3><i class="fas fa-database"></i> Data Management</h3>
+                            <div class="data-card">
+                                <div class="data-item">
+                                    <div class="data-icon"><i class="fas fa-download"></i></div>
+                                    <div class="data-info">
+                                        <h4>Export Data</h4>
+                                        <p>Download all your data as a JSON file</p>
+                                    </div>
+                                    <button class="btn btn-secondary" onclick="Profile.exportData()">
+                                        <i class="fas fa-download"></i> Export
+                                    </button>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-icon"><i class="fas fa-upload"></i></div>
+                                    <div class="data-info">
+                                        <h4>Import Data</h4>
+                                        <p>Restore your data from a backup file</p>
+                                    </div>
+                                    <label class="btn btn-secondary">
+                                        <i class="fas fa-upload"></i> Import
+                                        <input type="file" id="import-file" accept=".json" style="display:none" onchange="Profile.importData(this)">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-section danger-zone">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+                            <div class="data-card">
+                                <div class="data-item">
+                                    <div class="data-icon danger"><i class="fas fa-sync-alt"></i></div>
+                                    <div class="data-info">
+                                        <h4>Reset Tasks & Habits</h4>
+                                        <p>Clear all tasks and habits (keeps XP and level)</p>
+                                    </div>
+                                    <button class="btn btn-warning" onclick="Profile.confirmReset('tasks')">
+                                        <i class="fas fa-sync-alt"></i> Reset
+                                    </button>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-icon danger"><i class="fas fa-fire"></i></div>
+                                    <div class="data-info">
+                                        <h4>Reset Streaks</h4>
+                                        <p>Reset all streaks and daily progress</p>
+                                    </div>
+                                    <button class="btn btn-warning" onclick="Profile.confirmReset('streaks')">
+                                        <i class="fas fa-fire"></i> Reset
+                                    </button>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-icon danger"><i class="fas fa-skull"></i></div>
+                                    <div class="data-info">
+                                        <h4>Reset Gamification</h4>
+                                        <p>Reset all XP, levels, and achievements</p>
+                                    </div>
+                                    <button class="btn btn-warning" onclick="Profile.confirmReset('gamification')">
+                                        <i class="fas fa-skull"></i> Reset
+                                    </button>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-icon critical"><i class="fas fa-trash-alt"></i></div>
+                                    <div class="data-info">
+                                        <h4>Factory Reset</h4>
+                                        <p>Delete ALL data and start fresh</p>
+                                    </div>
+                                    <button class="btn btn-danger" onclick="Profile.confirmReset('all')">
+                                        <i class="fas fa-trash-alt"></i> Factory Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== NOTES ========== -->
+                <section id="notes" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-sticky-note"></i> Quick Notes</h2>
+                        <button class="btn btn-primary" id="add-note-btn">
+                            <i class="fas fa-plus"></i> New Note
+                        </button>
+                    </header>
+
+                    <div class="notes-container">
+                        <div id="notes-list" class="notes-list"></div>
+                        <div id="note-editor" class="note-editor" style="display: none;">
+                            <div class="note-editor-header">
+                                <input type="text" id="note-title-input" placeholder="Note Title">
+                                <div class="note-editor-actions">
+                                    <button id="save-note" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Save</button>
+                                    <button id="cancel-note" class="btn btn-secondary btn-sm"><i class="fas fa-times"></i></button>
+                                    <button id="delete-note" class="btn btn-danger btn-sm" style="display: none;"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <textarea id="note-content-input" placeholder="Write your note here..."></textarea>
+                            <div class="note-editor-footer">
+                                <span class="note-timestamp" id="note-timestamp"></span>
+                                <input type="text" id="note-tags-input" placeholder="Tags (comma separated)">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ========== ANALYTICS ========== -->
+                <section id="analytics" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-chart-line"></i> Progress Analytics</h2>
+                        <div id="analytics-level-display" class="level-display">
+                            <span class="level-emoji" id="user-level-emoji">⭐</span>
+                            <span class="level-info">
+                                <span class="level-number" id="user-level">1</span>
+                                <span class="level-name" id="user-level-name">Beginner</span>
+                            </span>
+                            <div class="xp-bar-small">
+                                <div class="xp-fill" id="user-xp-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="xp-text" id="user-xp-text">0/100 XP</span>
+                        </div>
+                        <div class="analytics-period">
+                            <button class="period-btn active" data-period="week">This Week</button>
+                            <button class="period-btn" data-period="month">This Month</button>
+                            <button class="period-btn" data-period="year">This Year</button>
+                        </div>
+                    </header>
+
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3><i class="fas fa-chart-pie"></i> Overview</h3>
+                            <div class="overview-stats">
+                                <div class="overview-stat">
+                                    <span class="overview-value" id="total-tasks-completed">0</span>
+                                    <span class="overview-label">Tasks Completed</span>
+                                </div>
+                                <div class="overview-stat">
+                                    <span class="overview-value" id="total-habits-completed">0</span>
+                                    <span class="overview-label">Habits Completed</span>
+                                </div>
+                                <div class="overview-stat">
+                                    <span class="overview-value" id="total-focus-hours">0</span>
+                                    <span class="overview-label">Focus Hours</span>
+                                </div>
+                                <div class="overview-stat">
+                                    <span class="overview-value" id="longest-streak">0</span>
+                                    <span class="overview-label">Longest Streak</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3><i class="fas fa-tags"></i> Time Distribution</h3>
+                            <div class="category-bars">
+                                <div class="category-bar">
+                                    <span class="cat-label">Learning</span>
+                                    <div class="cat-progress"><div class="cat-fill" style="width: 40%"></div></div>
+                                    <span class="cat-value">40%</span>
+                                </div>
+                                <div class="category-bar">
+                                    <span class="cat-label">Development</span>
+                                    <div class="cat-progress"><div class="cat-fill" style="width: 30%"></div></div>
+                                    <span class="cat-value">30%</span>
+                                </div>
+                                <div class="category-bar">
+                                    <span class="cat-label">Training</span>
+                                    <div class="cat-progress"><div class="cat-fill" style="width: 20%"></div></div>
+                                    <span class="cat-value">20%</span>
+                                </div>
+                                <div class="category-bar">
+                                    <span class="cat-label">Other</span>
+                                    <div class="cat-progress"><div class="cat-fill" style="width: 10%"></div></div>
+                                    <span class="cat-value">10%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3><i class="fas fa-trophy"></i> Achievements</h3>
+                            <div class="achievements-grid">
+                                <div class="achievement unlocked"><i class="fas fa-rocket"></i><span>First Task</span></div>
+                                <div class="achievement unlocked"><i class="fas fa-fire"></i><span>7 Day Streak</span></div>
+                                <div class="achievement"><i class="fas fa-star"></i><span>100 Tasks</span></div>
+                                <div class="achievement"><i class="fas fa-crown"></i><span>1000 Points</span></div>
+                                <div class="achievement"><i class="fas fa-medal"></i><span>30 Day Streak</span></div>
+                                <div class="achievement"><i class="fas fa-gem"></i><span>Master Planner</span></div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3><i class="fas fa-download"></i> Export Data</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 16px;">Download your progress data for backup or analysis.</p>
+                            <div class="export-buttons">
+                                <button id="export-json" class="btn btn-secondary"><i class="fas fa-file-code"></i> JSON</button>
+                                <button id="export-csv" class="btn btn-secondary"><i class="fas fa-file-csv"></i> CSV</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== KNOWLEDGE ========== -->
+                <section id="knowledge" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-bookmark"></i> Knowledge Base</h2>
+                        <button class="btn btn-primary" id="add-knowledge-btn">
+                            <i class="fas fa-plus"></i> Add Link
+                        </button>
+                    </header>
+
+                    <div class="knowledge-tabs">
+                        <button class="knowledge-tab active" data-tab="links">Saved Links</button>
+                        <button class="knowledge-tab" data-tab="courses">Courses</button>
+                        <button class="knowledge-tab" data-tab="skills">Skills</button>
+                    </div>
+
+                    <div id="knowledge-links" class="knowledge-content active">
+                        <div class="knowledge-search">
+                            <input type="text" id="knowledge-search-input" placeholder="Search links, tags, or categories...">
+                        </div>
+                        
+                        <div class="knowledge-categories-filter">
+                            <button class="knowledge-category-btn active" data-category="all">All</button>
+                            <button class="knowledge-category-btn" data-category="Programming">Programming</button>
+                            <button class="knowledge-category-btn" data-category="Fitness">Fitness</button>
+                            <button class="knowledge-category-btn" data-category="Languages">Languages</button>
+                            <button class="knowledge-category-btn" data-category="Business">Business</button>
+                            <button class="knowledge-category-btn" data-category="Design">Design</button>
+                            <button class="knowledge-category-btn" data-category="Science">Science</button>
+                        </div>
+
+                        <div class="links-grid" id="links-grid"></div>
+                    </div>
+
+                    <div id="knowledge-courses" class="knowledge-content">
+                        <div class="courses-header">
+                            <h3>My Learning Courses</h3>
+                            <button class="btn btn-secondary btn-sm" id="add-course-btn">
+                                <i class="fas fa-plus"></i> Add Course
+                            </button>
+                        </div>
+                        <div class="courses-list" id="courses-list"></div>
+                    </div>
+
+                    <div id="knowledge-skills" class="knowledge-content">
+                        <div class="skills-header">
+                            <h3>Skill Progress</h3>
+                            <button class="btn btn-secondary btn-sm" id="add-skill-btn">
+                                <i class="fas fa-plus"></i> Add Skill
+                            </button>
+                        </div>
+                        <div class="skills-grid" id="skills-grid"></div>
+                    </div>
+                </section>
+
+                <!-- ========== CHALLENGES ========== -->
+                <section id="challenges" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-trophy"></i> Daily Challenges</h2>
+                        <div class="challenge-stats">
+                            <div class="challenge-stat">
+                                <span class="stat-value" id="challenge-streak">0</span>
+                                <span class="stat-label">Day Streak</span>
+                            </div>
+                            <div class="challenge-stat">
+                                <span class="stat-value" id="challenge-points">0</span>
+                                <span class="stat-label">Total XP</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="challenge-progress-section">
+                        <div class="challenge-progress-header">
+                            <h3>Today's Progress</h3>
+                            <span class="challenge-count" id="challenge-count">0/5 Completed</span>
+                        </div>
+                        <div class="challenge-progress-bar">
+                            <div class="challenge-progress-fill" id="challenge-progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="challenges-grid" id="challenges-grid"></div>
+
+                    <div class="challenge-completion" id="challenge-completion" style="display: none;">
+                        <div class="completion-card">
+                            <div class="completion-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3>All Challenges Completed!</h3>
+                            <p>You've completed all 5 daily challenges. Come back tomorrow for new challenges!</p>
+                            <button class="btn btn-primary" onclick="DailyChallenges.generateDailyChallenges()">
+                                <i class="fas fa-refresh"></i> Get Tomorrow's Challenges Early
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== TOOLS ========== -->
+                <section id="tools" class="content-section">
+                    <header class="section-header">
+                        <h2><i class="fas fa-tools"></i> Productivity Tools</h2>
+                    </header>
+
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-icon"><i class="fas fa-key"></i></div>
+                            <h3>Password Generator</h3>
+                            <p>Generate secure passwords instantly</p>
+                            <div class="tool-preview">
+                                <input type="text" id="generated-password" readonly>
+                                <div class="tool-actions">
+                                    <button id="gen-password" class="btn btn-sm btn-primary"><i class="fas fa-sync-alt"></i> Generate</button>
+                                    <button id="copy-password" class="btn btn-sm btn-secondary"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tool-card">
+                            <div class="tool-icon"><i class="fas fa-stopwatch"></i></div>
+                            <h3>Countdown Timer</h3>
+                            <p>Set custom countdown timers</p>
+                            <div class="tool-preview">
+                                <input type="number" id="timer-minutes" placeholder="Minutes" min="1" value="5">
+                                <button id="start-timer" class="btn btn-sm btn-primary"><i class="fas fa-play"></i> Start</button>
+                                <div id="timer-display" class="timer-display">05:00</div>
+                            </div>
+                        </div>
+
+                        <div class="tool-card">
+                            <div class="tool-icon"><i class="fas fa-palette"></i></div>
+                            <h3>Color Picker</h3>
+                            <p>Pick and convert colors</p>
+                            <div class="tool-preview">
+                                <input type="color" id="color-input" value="#a855f7">
+                                <div class="color-values">
+                                    <span id="hex-value">#A855F7</span>
+                                    <span id="rgb-value">RGB(168, 85, 247)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tool-card">
+                            <div class="tool-icon"><i class="fas fa-link"></i></div>
+                            <h3>Quick Links</h3>
+                            <p>Save frequently used links</p>
+                            <div class="tool-preview">
+                                <div class="quick-links">
+                                    <a href="https://github.com" target="_blank" class="quick-link"><i class="fab fa-github"></i> GitHub</a>
+                                    <a href="https://stackoverflow.com" target="_blank" class="quick-link"><i class="fab fa-stack-overflow"></i> Stack Overflow</a>
+                                    <a href="https://developer.mozilla.org" target="_blank" class="quick-link"><i class="fas fa-book"></i> MDN Docs</a>
+                                    <a href="https://chat.openai.com" target="_blank" class="quick-link"><i class="fas fa-robot"></i> AI Assistant</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- AI Chat Widget -->
+    <div id="ai-chat-widget" class="ai-chat-widget">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button id="close-chat" class="chat-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot">
+                <div class="message-content">Hello! I'm your NOVA AI assistant. How can I help you today?</div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Ask me anything...">
+            <button id="send-chat"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 id="modal-title">Modal</h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Modular System -->
+    <script src="js/storage.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/nutrition.js"></script>
+    <script src="js/analysis.js"></script>
+    <script src="js/knowledge.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/challenges.js"></script>
+    <script src="js/aicoach.js"></script>
+    
+    <!-- Main Application -->
+    <script src="js/app.js"></script>
+    
+    <!-- Hide loading screen immediately and completely -->
+    <script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            var ls = document.getElementById('loading-screen');
+            if (ls) {
+                ls.style.display = 'none';
+                ls.style.visibility = 'hidden';
+                ls.style.pointerEvents = 'none';
+                ls.style.opacity = '0';
+            }
+        }, 500);
+    });
+    </script>
+</body>
+</html>
